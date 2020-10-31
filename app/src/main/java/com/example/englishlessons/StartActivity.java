@@ -32,6 +32,8 @@ public class StartActivity extends AppCompatActivity {
         tabHost.addTab(tabSpec);
 
         tabHost.setCurrentTab(0);
+
+
     }
 
 }
