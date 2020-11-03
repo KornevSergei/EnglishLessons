@@ -1,9 +1,13 @@
 package com.example.englishlessons;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,16 +41,43 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonView
 
         holder.lessonImageView.setImageResource(lessonItem.getImageResource());
         holder.lessonTitleTextView.setText(lessonItem.getTitle());
-        holder.lessonDescriptionText.setText(lessonItem.getDescription());
 
     }
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lessonItems.size();
     }
 
-    public class lessonViewHolder {
+
+
+    public class LessonViewHolder extends RecyclerView.ViewHolder implements AdapterView.OnClickListener {
+
+        public ImageView lessonImage;
+        public TextView lessonTitle;
+
+        public lessonViewHolder(@NonNull View itemView) {
+            super(itemView);
+            itemView.setOnClickListener(this);
+
+            lessonImageView = itemView.findViewById(R.id.lessonImageView);
+            lessonTitleTextView = itemView.findViewById(R.id.lessonTitleTextView);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            //получаем позицию
+            int position = getAdapterPosition();
+            LessonItem lessonItem = lessonItems.get(position);
+
+            Intent intent = new Intent(context, LessonDescription.class);
+            intent.putExtra("imageResource",lessonItem.getImageResource());
+            intent.putExtra("title",lessonItem.getTitle());
+            intent.putExtra("description",lessonItem.getDescription());
+            context.startActivity(intent);
+
+        }
     }
 }

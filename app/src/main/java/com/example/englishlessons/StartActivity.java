@@ -1,13 +1,22 @@
 package com.example.englishlessons;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+
 public class StartActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +45,21 @@ public class StartActivity extends AppCompatActivity {
 
         tabHost.setCurrentTab(0);
 
+
+        ArrayList<LessonItem> lessonItemList = new ArrayList<>();
+//        lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24,"dwwfafa","acwvevev"));
+
+
+
+        recyclerView = findViewById(R.id.recyclerView);
+
+        recyclerView.setHasFixedSize(true);
+        adapter = new LessonAdapter(lessonItemList, this);
+
+        layoutManager = new LinearLayoutManager(this);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
 
     }
 }
