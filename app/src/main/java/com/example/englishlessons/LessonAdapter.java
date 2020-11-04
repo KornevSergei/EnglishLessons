@@ -17,11 +17,17 @@ import java.util.ArrayList;
 //делаем адаптер для уроков
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonViewHolder> {
 
+    ArrayList<LessonItem> lessonItems;
+    Context context;
+
+    public LessonAdapter(ArrayList<LessonItem> lessonItems) {
+        this.lessonItems = lessonItems;
+    }
 
     @NonNull
     @Override
-    public LessonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lesson_item,parent,false);
+    public LessonAdapter.LessonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lesson_item, parent, false);
         LessonViewHolder lessonViewHolder = new LessonViewHolder(view);
         return lessonViewHolder;
 
@@ -29,21 +35,31 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonView
 
     @Override
     public void onBindViewHolder(@NonNull LessonViewHolder holder, int position) {
+        LessonItem lessonItem = lessonItems.get(position);
+
+        holder.lessonImageView.setImageResource(lessonItem.getImageResource());
+        holder.lessonTitleTextView.setText(lessonItem.getTitle());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lessonItems.size();
     }
 
-    public static class LessonViewHolder extends RecyclerView.ViewHolder{
+
+    //связываем поля с разметкой
+    public static class LessonViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView lessonImageView;
-        public TextView titleTextView;
+        public TextView lessonTitleTextView;
 
         public LessonViewHolder(@NonNull View itemView) {
             super(itemView);
+
+
+            lessonImageView = itemView.findViewById(R.id.lessonImageView);
+            lessonTitleTextView = itemView.findViewById(R.id.lessonTitleTextView);
         }
     }
 
