@@ -45,21 +45,21 @@ public class StartActivity extends AppCompatActivity {
 
         tabHost.setCurrentTab(0);
 
-
+        //добавляем уроки в список
         ArrayList<LessonItem> lessonItemList = new ArrayList<>();
-//        lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24,"dwwfafa","acwvevev"));
+        lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24,Utils.LESSON_1,Utils.DESCRIPTION_1));
 
 
 
-        recyclerView = findViewById(R.id.recyclerView);
-
-        recyclerView.setHasFixedSize(true);
-        adapter = new LessonAdapter(lessonItemList, this);
-
-        layoutManager = new LinearLayoutManager(this);
-
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView = findViewById(R.id.recyclerView);
+//
+//        recyclerView.setHasFixedSize(true);
+//        adapter = new LessonAdapter(lessonItemList, this);
+//
+//        layoutManager = new LinearLayoutManager(this);
+//
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(layoutManager);
 
     }
 }
