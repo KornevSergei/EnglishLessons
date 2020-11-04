@@ -57,11 +57,16 @@ public class StartActivity extends AppCompatActivity {
         lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24, Utils.LESSON_2, Utils.DESCRIPTION_2));
         lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24, Utils.LESSON_2, Utils.DESCRIPTION_2));
         lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24, Utils.LESSON_2, Utils.DESCRIPTION_2));
+        lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24, Utils.LESSON_2, Utils.DESCRIPTION_2));
+        lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24, Utils.LESSON_2, Utils.DESCRIPTION_2));
+        lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24, Utils.LESSON_2, Utils.DESCRIPTION_2));
+        lessonItemList.add(new LessonItem(R.drawable.ic_baseline_done_outline_24, Utils.LESSON_2, Utils.DESCRIPTION_2));
 
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        adapter = new LessonAdapter(lessonItemList);
+        //помимо списка уроков передаем и контекст
+        adapter = new LessonAdapter(lessonItemList, this);
         layoutManager = new LinearLayoutManager(this);
 
         recyclerView.setAdapter(adapter);

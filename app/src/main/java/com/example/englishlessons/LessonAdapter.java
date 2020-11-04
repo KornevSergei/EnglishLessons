@@ -18,10 +18,12 @@ import java.util.ArrayList;
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonViewHolder> {
 
     ArrayList<LessonItem> lessonItems;
+    //делаем контекст для адаптера что бы можно было передавать по клику урока
     Context context;
 
-    public LessonAdapter(ArrayList<LessonItem> lessonItems) {
+    public LessonAdapter(ArrayList<LessonItem> lessonItems, Context context) {
         this.lessonItems = lessonItems;
+        this.context = context;
     }
 
     @NonNull
@@ -48,20 +50,40 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.LessonView
     }
 
 
-    //связываем поля с разметкой
-    public static class LessonViewHolder extends RecyclerView.ViewHolder {
+
+
+    //связываем поля с разметкой и даём возможность клика
+    class LessonViewHolder extends RecyclerView.ViewHolder implements AdapterView.OnClickListener {
 
         public ImageView lessonImageView;
         public TextView lessonTitleTextView;
 
         public LessonViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            itemView.setOnClickListener(this);
 
             lessonImageView = itemView.findViewById(R.id.lessonImageView);
             lessonTitleTextView = itemView.findViewById(R.id.lessonTitleTextView);
         }
-    }
 
+
+        //описываем действие клика на элементы урока
+        @Override
+        public void onClick(View v) {
+            //передаём информацию
+            int position = getAdapterPosition();
+            LessonItem lessonItem = lessonItems.get(position);
+
+            //запускаем нужную активти узнав позицию
+            Intent intent = new Intent(context, LessonDescription.class);
+            intent.putExtra("imageResource", lessonItem.getImageResource());
+            intent.putExtra("title", lessonItem.getTitle());
+            intent.putExtra("description", lessonItem.getDescription());
+            context.startActivity(intent);
+
+
+        }
+
+    }
 
 }
