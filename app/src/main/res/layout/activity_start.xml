@@ -3,8 +3,8 @@
     android:id="@+id/tabHost"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal">
+    android:background="@color/dark_grey"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +14,6 @@
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="match_parent"
-            android:background="@color/grey"
             android:layout_height="wrap_content">
         </TabWidget>
 
@@ -31,6 +30,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
+                    android:paddingStart="100dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scrollbars="vertical" />

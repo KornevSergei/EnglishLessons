@@ -5,8 +5,7 @@ package com.example.englishlessons;
 public class Utils {
 
     public static final String LESSON_1 = "Урок 1";
-    public static final String DESCRIPTION_1 = "В этом уроке мы изучим 2 новых глагола:\n" +
-            "to love - любить и to trust - доверять.\n" +
+    public static final String DESCRIPTION_1 = "В этом уроке мы изучим 2 новых глагола: to love - любить и to trust - доверять.\n" +
             "Это опять глаголы состояния.\n" +
             "\n" +
             "Как вы помните из прошлого урока, в 3-ем лице единственного числа к глаголам простого настоящего времени добавляется окончание -s.\n" +
